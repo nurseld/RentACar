@@ -8,7 +8,6 @@ public class Pair2Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pair2Application.class, args);
-		//
 	}
 
 }
