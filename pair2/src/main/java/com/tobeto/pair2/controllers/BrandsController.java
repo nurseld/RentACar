@@ -5,18 +5,16 @@ import com.tobeto.pair2.services.dtos.brand.requests.AddBrandRequest;
 import com.tobeto.pair2.services.dtos.brand.requests.DeleteBrandRequest;
 import com.tobeto.pair2.services.dtos.brand.requests.UpdateBrandRequest;
 import com.tobeto.pair2.services.dtos.brand.responses.GetListBrandResponse;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("api/brands")
+@AllArgsConstructor
 public class BrandsController {
     private BrandService brandService;
-
-    public BrandsController(BrandService brandService) {
-        this.brandService = brandService;
-    }
 
     @PostMapping
     public void add(@RequestBody AddBrandRequest request){
