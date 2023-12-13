@@ -42,9 +42,9 @@ public class ColorsController {
         return colorService.getAll();
     }
 
-    @GetMapping("{id}")
+  /*  @GetMapping("{id}")
     public GetColorResponse getById(@PathVariable int id){
         return colorService.getById(id);
-    }
+    }*/
 
 }

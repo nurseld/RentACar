@@ -4,5 +4,6 @@ import lombok.Data;
 
 @Data
 public class GetColorResponse {
+    private int id;
     private String name;
 }

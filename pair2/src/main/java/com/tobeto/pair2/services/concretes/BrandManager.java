@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class BrandManager implements BrandService {
 
-    private BrandRepository brandRepository;
+    private final BrandRepository brandRepository;
 
     public BrandManager(BrandRepository brandRepository) {
         this.brandRepository = brandRepository;

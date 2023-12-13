@@ -1,4 +1,5 @@
-package com.tobeto.pair2.services.dtos.model.requests;
+package com.tobeto.pair2.services.dtos.model.responses;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateModelRequest {
-    private int id;
+public class GetListModelResponse {
     private String name;
-    private int branId;
+    private String brandName;
 }

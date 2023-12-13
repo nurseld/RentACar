@@ -1,5 +1,6 @@
 package com.tobeto.pair2.services.abstracts;
 
+import com.tobeto.pair2.entitites.Color;
 import com.tobeto.pair2.services.dtos.brand.requests.AddBrandRequest;
 import com.tobeto.pair2.services.dtos.brand.requests.DeleteBrandRequest;
 import com.tobeto.pair2.services.dtos.brand.requests.UpdateBrandRequest;
@@ -19,7 +20,7 @@ public interface ColorService {
     void update(UpdateColorRequest request);
     void delete(DeleteColorRequest request);
     List<GetListColorResponse> getAll();
-    GetColorResponse getById(int id);
+    Color getById(int id);
 
 
 }

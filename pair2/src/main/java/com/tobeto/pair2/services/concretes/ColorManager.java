@@ -52,22 +52,20 @@ public class ColorManager implements ColorService {
 
         List<Color> colorList = colorRepository.findAll();
         List<GetListColorResponse> getAllColorResponseList = new ArrayList<>();
-        for (Color color : colorList) {
+       /* for (Color color : colorList) {
             GetListColorResponse getListColorResponse = new GetListColorResponse();
             getListColorResponse.setId(color.getId());
             getListColorResponse.setName(color.getName());
 
-        }
-        return getAllColorResponseList;
+        }*/
+        return null; //getAllColorResponseList
     }
 
     @Override
-    public GetColorResponse getById(int id) {
+    public Color getById(int id) {
 
-        Color colorToId = colorRepository.findById(id).orElseThrow();
-        GetColorResponse getColorResponse = new GetColorResponse();
-        getColorResponse.setName(colorToId.getName());
-        return getColorResponse;
+
+        return colorRepository.findById(id).orElseThrow();
 
         }
 
