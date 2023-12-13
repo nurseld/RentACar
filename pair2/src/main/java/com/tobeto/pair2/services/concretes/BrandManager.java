@@ -6,14 +6,12 @@ import com.tobeto.pair2.services.abstracts.BrandService;
 import com.tobeto.pair2.services.dtos.brand.requests.AddBrandRequest;
 import com.tobeto.pair2.services.dtos.brand.requests.DeleteBrandRequest;
 import com.tobeto.pair2.services.dtos.brand.requests.UpdateBrandRequest;
+import com.tobeto.pair2.services.dtos.brand.responses.GetBrandResponse;
 import com.tobeto.pair2.services.dtos.brand.responses.GetListBrandResponse;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class BrandManager implements BrandService {
@@ -62,7 +60,10 @@ public class BrandManager implements BrandService {
     }
 
     @Override
-    public Brand getById(int id) {
-        return brandRepository.findById(id).orElseThrow();
+    public GetBrandResponse getById(int id) {
+        Brand brandToId = brandRepository.findById(id).orElseThrow();
+        GetBrandResponse getBrandResponse = new GetBrandResponse();
+        getBrandResponse.setName(brandToId.getName());
+        return getBrandResponse;
     }
 }

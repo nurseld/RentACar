@@ -4,6 +4,7 @@ import com.tobeto.pair2.services.abstracts.BrandService;
 import com.tobeto.pair2.services.dtos.brand.requests.AddBrandRequest;
 import com.tobeto.pair2.services.dtos.brand.requests.DeleteBrandRequest;
 import com.tobeto.pair2.services.dtos.brand.requests.UpdateBrandRequest;
+import com.tobeto.pair2.services.dtos.brand.responses.GetBrandResponse;
 import com.tobeto.pair2.services.dtos.brand.responses.GetListBrandResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,11 @@ public class BrandsController {
     @GetMapping("getall")
     public List<GetListBrandResponse> getAll() {
         return brandService.getAll();
+    }
+
+    @GetMapping("{id}")
+    public GetBrandResponse getById(@PathVariable int id){
+        return brandService.getById(id);
     }
 
 
