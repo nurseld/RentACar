@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AddModelRequest {
     private String name;
-    private int branId;
+    private String brandName;
 
 }

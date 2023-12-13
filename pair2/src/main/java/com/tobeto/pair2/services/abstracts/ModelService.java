@@ -1,11 +1,21 @@
 package com.tobeto.pair2.services.abstracts;
 
-import com.tobeto.pair2.entitites.Model;
-import com.tobeto.pair2.services.dtos.model.responses.GetModelByIdResponse;
+import com.tobeto.pair2.services.dtos.model.requests.DeleteModelRequest;
+import com.tobeto.pair2.services.dtos.model.requests.UpdateModelRequest;
+import com.tobeto.pair2.services.dtos.model.responses.GetAllModelResponse;
+import com.tobeto.pair2.services.dtos.model.responses.GetByIdModelResponse;
+
+import java.util.List;
 
 public interface ModelService {
 
-    //GetModelByIdResponse getById(int modelId);
+    void update(UpdateModelRequest request);
 
-    Model getById(int id);
+    void delete(DeleteModelRequest request);
+
+    List<GetAllModelResponse> getAll();
+
+    GetByIdModelResponse getById(int id);
+
+
 }

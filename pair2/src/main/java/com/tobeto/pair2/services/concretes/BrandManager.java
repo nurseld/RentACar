@@ -6,7 +6,7 @@ import com.tobeto.pair2.services.abstracts.BrandService;
 import com.tobeto.pair2.services.dtos.brand.requests.AddBrandRequest;
 import com.tobeto.pair2.services.dtos.brand.requests.DeleteBrandRequest;
 import com.tobeto.pair2.services.dtos.brand.requests.UpdateBrandRequest;
-import com.tobeto.pair2.services.dtos.brand.responses.GetBrandResponse;
+import com.tobeto.pair2.services.dtos.brand.responses.GetByIdBrandResponse;
 import com.tobeto.pair2.services.dtos.brand.responses.GetListBrandResponse;
 import org.springframework.stereotype.Service;
 
@@ -60,10 +60,10 @@ public class BrandManager implements BrandService {
     }
 
     @Override
-    public GetBrandResponse getById(int id) {
+    public GetByIdBrandResponse getById(int id) {
         Brand brandToId = brandRepository.findById(id).orElseThrow();
-        GetBrandResponse getBrandResponse = new GetBrandResponse();
-        getBrandResponse.setName(brandToId.getName());
-        return getBrandResponse;
+        GetByIdBrandResponse getByIdBrandResponse = new GetByIdBrandResponse();
+        getByIdBrandResponse.setName(brandToId.getName());
+        return getByIdBrandResponse;
     }
 }

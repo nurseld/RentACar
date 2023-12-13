@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class DeleteModelRequest {
     private int id;
     private String name;
-    private int brandId;
+    private String brandName;
 }
