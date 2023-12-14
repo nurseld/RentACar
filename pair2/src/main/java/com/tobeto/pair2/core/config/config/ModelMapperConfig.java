@@ -1,4 +1,4 @@
-package com.tobeto.pair2.config;
+package com.tobeto.pair2.core.config.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

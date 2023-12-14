@@ -15,5 +15,5 @@ public interface ColorService {
     void delete(DeleteColorRequest request);
     List<GetAllColorResponse> getAll();
     GetByIdColorResponse getById(int id);
-
+    boolean existsByColorId(int colorId);
 }

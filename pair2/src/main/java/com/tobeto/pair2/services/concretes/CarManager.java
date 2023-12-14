@@ -32,6 +32,13 @@ public class CarManager implements CarService {
             throw new RuntimeException("Another car cannot be added with the same license plate.");
         }
 
+        if(!modelService.existsByModelId(request.getModelId())) {
+            throw new RuntimeException("The ModelId must exist in the database.");
+        }
+
+        if(!colorService.existsByColorId(request.getColorId())) {
+            throw new RuntimeException("The ColorId must exist in the database.");
+        }
 
         Car car = this.modelMapperService.forRequest().map(request, Car.class);
         this.carRepository.save(car);

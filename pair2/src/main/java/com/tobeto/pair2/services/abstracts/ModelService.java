@@ -17,5 +17,5 @@ public interface ModelService {
 
     GetByIdModelResponse getById(int id);
 
-
+    boolean existsByModelId(int modelId);
 }
