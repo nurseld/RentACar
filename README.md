@@ -3,6 +3,10 @@
 
 Tobeto çatısı altında Java ve React full-stack geliştiricileri olarak, şu anda Rent a Car projesi üzerinde çalışıyoruz. Bu girişim, özellikle Tobeto'nun eğitim ekosistemi için özel olarak tasarlanmış olan eğitimimizin önemli bir parçasıdır. Odak noktamız, hızlı rezervasyon sürecini ve sorunsuz bir kullanıcı deneyimini garanti eden gelişmiş bir araç kiralama platformu oluşturmaktadır. Java Spring Boot ve React teknolojilerini kullanarak, Tobeto'nun standartlarıyla uyumlu bir çözüm sunmaya kararlıyız.
 
+## ER Diagram for Database
+
+[![47809d54e85fba7c7e6de94af3a803f9.md.png](https://imgtr.ee/images/2023/12/14/47809d54e85fba7c7e6de94af3a803f9.md.png)](https://imgtr.ee/image/IqjIND)
+
 
 ## Acknowledgements
 
