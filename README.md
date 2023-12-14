@@ -5,7 +5,7 @@ Tobeto çatısı altında Java ve React full-stack geliştiricileri olarak, şu 
 
 ## ER Diagram for Database
 
-[![47809d54e85fba7c7e6de94af3a803f9.md.png](https://imgtr.ee/images/2023/12/14/47809d54e85fba7c7e6de94af3a803f9.md.png)](https://imgtr.ee/image/IqjIND)
+[![47809d54e85fba7c7e6de94af3a803f9.png](https://imgtr.ee/images/2023/12/14/47809d54e85fba7c7e6de94af3a803f9.png)](https://imgtr.ee/image/IqjIND)
 
 
 ## Acknowledgements
