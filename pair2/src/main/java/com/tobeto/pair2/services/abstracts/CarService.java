@@ -15,5 +15,5 @@ public interface CarService {
     GetDeleteCarResponse delete(DeleteCarRequest request);
     List<GetAllCarResponse> getAll();
     GetByIdCarResponse getById(int id);
-
+    boolean existsByCarId(int carId);
 }

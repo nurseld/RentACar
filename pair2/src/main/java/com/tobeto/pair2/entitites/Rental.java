@@ -10,7 +10,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.util.List;
 
-@Table(name = "invoices")
+@Table(name = "rentals")
 @Entity
 @Getter
 @Setter
@@ -36,7 +36,7 @@ public class Rental {
     private int startKilometer;
 
     @Column(name = "end_kilometer")
-    private int endKilometer;
+    private Integer endKilometer;
 
     @Column(name = "total_price")
     private double totalPrice;

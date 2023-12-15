@@ -32,7 +32,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "birth_date")
+    @Column(name = "birthdate")
     private LocalDate birthDate;
 
     @OneToMany(mappedBy = "user")
