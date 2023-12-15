@@ -6,11 +6,10 @@ import com.tobeto.pair2.repositories.ModelRepository;
 import com.tobeto.pair2.services.abstracts.BrandService;
 import com.tobeto.pair2.services.abstracts.ModelService;
 import com.tobeto.pair2.services.dtos.model.requests.AddModelRequest;
-import com.tobeto.pair2.services.dtos.model.requests.DeleteModelRequest;
 import com.tobeto.pair2.services.dtos.model.requests.UpdateModelRequest;
 import com.tobeto.pair2.services.dtos.model.responses.GetAllModelResponse;
 import com.tobeto.pair2.services.dtos.model.responses.GetByIdModelResponse;
-import com.tobeto.pair2.services.dtos.model.responses.GetDeleteModelResponse;
+
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +21,10 @@ public class ModelManager implements ModelService {
 
     private final ModelRepository modelRepository;
     private final ModelMapperService modelMapperService;
-
     private final BrandService brandService;
 
     public void add(AddModelRequest request) {
+
         if (modelRepository.existsModelByName(request.getName())) {
             throw new RuntimeException("This model already exists in the database.");
         }
@@ -49,26 +48,19 @@ public class ModelManager implements ModelService {
     }
 
     @Override
-    public GetDeleteModelResponse delete(DeleteModelRequest request) {
+    public void delete(Integer id) {
 
-        Model model = modelRepository.findById(request.getId()).orElseThrow();
-
-        GetDeleteModelResponse response = this.modelMapperService.forResponse().map(model, GetDeleteModelResponse.class);
-
-        this.modelRepository.delete(model);
-
-        return response;
-
+        Model modelToDelete = this.modelRepository.findById(id).orElseThrow();
+        this.modelRepository.deleteById(id);
     }
+
 
     @Override
     public List<GetAllModelResponse> getAll() {
 
         List<Model> modelList = modelRepository.findAll();
-
         List<GetAllModelResponse> modelResponses = modelList.stream()
                 .map(model -> this.modelMapperService.forResponse().map(model,GetAllModelResponse.class)).toList();
-
         return modelResponses;
     }
 
@@ -76,15 +68,14 @@ public class ModelManager implements ModelService {
     public GetByIdModelResponse getById(int id) {
 
         Model model = modelRepository.findById(id).orElseThrow();
-
         GetByIdModelResponse response = this.modelMapperService.forResponse().map(model,GetByIdModelResponse.class);
-
         return response;
 
     }
 
     @Override
     public boolean existsByModelId(int modelId) {
+
         return modelRepository.existsById(modelId);
     }
 

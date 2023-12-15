@@ -11,10 +11,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateModelRequest {
+
     @Positive
-    private int id;
+    private Integer id;
+
     @NotBlank
     @Size(min = 2, message = "The Model cannot be less than 2 characters.")
     private String name;
+
     private int brandId;
 }

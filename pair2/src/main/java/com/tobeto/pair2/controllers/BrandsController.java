@@ -15,6 +15,7 @@ import java.util.List;
 @RequestMapping("/api/brands")
 @AllArgsConstructor
 public class BrandsController {
+
     private BrandService brandService;
 
     @PostMapping("/add")
