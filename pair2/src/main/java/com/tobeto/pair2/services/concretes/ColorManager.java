@@ -24,6 +24,9 @@ public class ColorManager implements ColorService {
     @Override
     public void add(AddColorRequest request) {
 
+        if(colorRepository.existsColorByName(request.getName())){
+            throw new RuntimeException("This color already exists in the database.");
+        }
         Color color = this.modelMapperService.forRequest().map(request, Color.class);
         this.colorRepository.save(color);
 
