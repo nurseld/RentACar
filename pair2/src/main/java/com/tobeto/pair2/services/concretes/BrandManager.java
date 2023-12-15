@@ -26,13 +26,13 @@ public class BrandManager implements BrandService {
 
     @Override
     public void add(AddBrandRequest request) {
-        if (brandRepository.existsBrand(request.getName())) {
+        if (brandRepository.existsBrandByName(request.getName())) {
             throw new RuntimeException("This brand already exists in the database.");
         }
-            Brand brand = this.modelMapperService.forRequest().map(request, Brand.class);
-            this.brandRepository.save(brand);
+        Brand brand = this.modelMapperService.forRequest().map(request, Brand.class);
+        this.brandRepository.save(brand);
 
-        }
+    }
 
     @Override
     public void update(UpdateBrandRequest request) {

@@ -44,5 +44,4 @@ public class BrandsController {
         return brandService.getById(id);
     }
 
-
 }
