@@ -1,21 +1,16 @@
 package com.tobeto.pair2.services.concretes;
 
 import com.tobeto.pair2.core.utilities.mapper.ModelMapperService;
-import com.tobeto.pair2.entitites.Car;
-import com.tobeto.pair2.entitites.Invoice;
 import com.tobeto.pair2.entitites.Rental;
 import com.tobeto.pair2.repositories.RentalRepository;
 import com.tobeto.pair2.services.abstracts.CarService;
 import com.tobeto.pair2.services.abstracts.RentalService;
 import com.tobeto.pair2.services.abstracts.UserService;
-import com.tobeto.pair2.services.dtos.car.responses.GetAllCarResponse;
 import com.tobeto.pair2.services.dtos.car.responses.GetByIdCarResponse;
 import com.tobeto.pair2.services.dtos.rental.requests.AddRentalRequest;
-import com.tobeto.pair2.services.dtos.rental.requests.DeleteRentalRequest;
 import com.tobeto.pair2.services.dtos.rental.requests.UpdateRentalRequest;
 import com.tobeto.pair2.services.dtos.rental.responses.GetAllRentalResponse;
 import com.tobeto.pair2.services.dtos.rental.responses.GetByIdRentalResponse;
-import com.tobeto.pair2.services.dtos.rental.responses.GetDeleteRentalResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -84,9 +79,9 @@ public class RentalManager implements RentalService {
     @Override
     public void update(UpdateRentalRequest request) {
 
-//        if(!rentalRepository.existsById(request.getId())){
-//            throw new RuntimeException("RentalId not found");
-//        }
+        if(!rentalRepository.existsById(request.getId())){
+            throw new RuntimeException("RentalId not found");
+        }
 
         LocalDate startDate = request.getStartDate();
 
@@ -131,22 +126,18 @@ public class RentalManager implements RentalService {
     }
 
     @Override
-    public void delete(DeleteRentalRequest request) {
+    public void delete(Integer id) {
 
-        Rental rental = this.modelMapperService.forRequest().map(request, Rental.class);
-
-        this.rentalRepository.delete(rental);
-
-
+        Rental rentalToDelete = this.rentalRepository.findById(id).orElseThrow();
+        this.rentalRepository.delete(rentalToDelete);
     }
+
 
     public List<GetAllRentalResponse> getAll() {
 
         List<Rental> rentals = rentalRepository.findAll();
-
         List<GetAllRentalResponse> rentalResponses = rentals.stream()
                 .map(rental -> this.modelMapperService.forResponse().map(rental,GetAllRentalResponse.class)).toList();
-
         return rentalResponses;
     }
 

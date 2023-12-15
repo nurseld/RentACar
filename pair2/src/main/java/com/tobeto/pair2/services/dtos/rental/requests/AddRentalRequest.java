@@ -12,8 +12,11 @@ import java.time.LocalDate;
 public class AddRentalRequest {
 
     private LocalDate startDate;
+
     private LocalDate endDate;
+
     private int carId;
+
     private int userId;
 
 

@@ -2,7 +2,6 @@ package com.tobeto.pair2.controllers;
 
 import com.tobeto.pair2.services.abstracts.RentalService;
 import com.tobeto.pair2.services.dtos.rental.requests.AddRentalRequest;
-import com.tobeto.pair2.services.dtos.rental.requests.DeleteRentalRequest;
 import com.tobeto.pair2.services.dtos.rental.requests.UpdateRentalRequest;
 import com.tobeto.pair2.services.dtos.rental.responses.GetAllRentalResponse;
 import com.tobeto.pair2.services.dtos.rental.responses.GetByIdRentalResponse;
@@ -24,9 +23,9 @@ public class RentalsController {
         rentalService.add(request);
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@RequestBody DeleteRentalRequest request) {
-        rentalService.delete(request);
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id) {
+        rentalService.delete(id);
     }
     @PutMapping("/update")
     public void update(@RequestBody @Valid UpdateRentalRequest request) {

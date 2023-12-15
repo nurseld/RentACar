@@ -12,13 +12,21 @@ import java.time.LocalDate;
 public class GetAllRentalResponse {
 
     private int id;
+
     private LocalDate startDate;
+
     private LocalDate endDate;
+
     private LocalDate returnDate;
+
     private int startKilometer;
+
     private Integer endKilometer;
+
     private double totalPrice;
+
     private int userId;
+
     private int carId;
 
 }
