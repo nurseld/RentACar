@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateColorRequest {
-    private int id;
+
+    private Integer id;
+
     @NotBlank
     @Size(min = 2, message = "Color length can not be less than 2 characters.")
     private String name;

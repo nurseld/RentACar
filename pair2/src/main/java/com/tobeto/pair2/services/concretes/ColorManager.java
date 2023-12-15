@@ -24,9 +24,10 @@ public class ColorManager implements ColorService {
     @Override
     public void add(AddColorRequest request) {
 
-        if(colorRepository.existsColorByName(request.getName())){
+        if(colorRepository.existsColorByName(request.getName().toLowerCase())){
             throw new RuntimeException("This color already exists in the database.");
         }
+
         Color color = this.modelMapperService.forRequest().map(request, Color.class);
         this.colorRepository.save(color);
 
@@ -42,21 +43,21 @@ public class ColorManager implements ColorService {
     }
 
     @Override
-    public void delete(DeleteColorRequest request) {
+    public void delete(Integer id) {
 
-        Color colorToDelete = this.colorRepository.findById(request.getId()).orElseThrow();
+        Color colorToDelete = this.colorRepository.findById(id).orElseThrow();
         this.colorRepository.delete(colorToDelete);
 
     }
+
+
 
     @Override
     public List<GetAllColorResponse> getAll() {
 
         List<Color> colorList = colorRepository.findAll();
-
         List<GetAllColorResponse> colorResponse = colorList.stream()
                 .map(color -> this.modelMapperService.forResponse().map(color,GetAllColorResponse.class)).toList();
-
         return colorResponse;
     }
 
@@ -64,15 +65,14 @@ public class ColorManager implements ColorService {
     public GetByIdColorResponse getById(int id) {
 
         Color color = colorRepository.findById(id).orElseThrow();
-
         GetByIdColorResponse response = this.modelMapperService.forResponse().map(color,GetByIdColorResponse.class);
-
         return response;
 
         }
 
     @Override
     public boolean existsByColorId(int colorId) {
+
         return colorRepository.existsById(colorId);
     }
 

@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DeleteColorRequest {
-    private int id;
+
+    private Integer id;
+
     private String name;
 }
