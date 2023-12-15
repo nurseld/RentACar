@@ -51,13 +51,13 @@ public class ModelManager implements ModelService {
     }
 
     @Override
-    public GetDeleteModelResponse delete(DeleteModelRequest request) {
+    public DeleteModelRequest delete(int id) {
 
-        Model model = modelRepository.findById(request.getId()).orElseThrow();
+        Model model = modelRepository.findById(id).orElseThrow();
 
-        GetDeleteModelResponse response = this.modelMapperService.forResponse().map(model, GetDeleteModelResponse.class);
+        DeleteModelRequest response = this.modelMapperService.forResponse().map(model, DeleteModelRequest.class);
 
-        this.modelRepository.delete(model);
+        this.modelRepository.deleteById(id);
 
         return response;
 

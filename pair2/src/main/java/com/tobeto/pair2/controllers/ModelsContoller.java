@@ -29,9 +29,9 @@ public class ModelsContoller {
         modelService.update(request);
     }
 
-    @DeleteMapping("/delete")
-    public GetDeleteModelResponse delete(@RequestBody DeleteModelRequest request) {
-        return modelService.delete(request);
+    @DeleteMapping("/delete/{id}")
+    public DeleteModelRequest delete(@PathVariable int id) {
+        return modelService.delete(id);
     }
 
     @GetMapping("/getAll")
