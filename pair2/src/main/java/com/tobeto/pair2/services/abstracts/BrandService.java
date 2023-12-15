@@ -17,4 +17,6 @@ public interface BrandService {
     GetByIdBrandResponse getById(int id);
 
 
+    boolean existsByBrandId(int brandId);
+
 }

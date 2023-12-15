@@ -2,6 +2,7 @@ package com.tobeto.pair2.services.concretes;
 
 import com.tobeto.pair2.core.utilities.mapper.ModelMapperService;
 import com.tobeto.pair2.entitites.Brand;
+import com.tobeto.pair2.entitites.Car;
 import com.tobeto.pair2.repositories.BrandRepository;
 import com.tobeto.pair2.services.abstracts.BrandService;
 import com.tobeto.pair2.services.dtos.brand.requests.AddBrandRequest;
@@ -10,6 +11,8 @@ import com.tobeto.pair2.services.dtos.brand.requests.UpdateBrandRequest;
 import com.tobeto.pair2.services.dtos.brand.responses.GetByIdBrandResponse;
 import com.tobeto.pair2.services.dtos.brand.responses.GetAllBrandResponse;
 import com.tobeto.pair2.services.dtos.brand.responses.GetDeleteBrandResponse;
+import com.tobeto.pair2.services.dtos.car.responses.GetAllCarResponse;
+import com.tobeto.pair2.services.dtos.car.responses.GetByIdCarResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -56,22 +59,25 @@ public class BrandManager implements BrandService {
     @Override
     public List<GetAllBrandResponse> getAll() {
 
-        List<Brand> brandList = brandRepository.findAll();
-        List<GetAllBrandResponse> getAllBrandResponseList = new ArrayList<>();
-        for (Brand brand : brandList) {
-            GetAllBrandResponse getAllBrandResponse = new GetAllBrandResponse();
-            getAllBrandResponse.setId(brand.getId());
-            getAllBrandResponse.setName(brand.getName());
+        List<Brand> brands = brandRepository.findAll();
 
-        }
-        return getAllBrandResponseList;
+        List<GetAllBrandResponse> brandResponses = brands.stream()
+                .map(brand -> this.modelMapperService.forResponse().map(brand,GetAllBrandResponse.class)).toList();
+
+        return brandResponses;
     }
 
     @Override
     public GetByIdBrandResponse getById(int id) {
-        Brand brandToId = brandRepository.findById(id).orElseThrow();
-        GetByIdBrandResponse getByIdBrandResponse = new GetByIdBrandResponse();
-        getByIdBrandResponse.setName(brandToId.getName());
-        return getByIdBrandResponse;
+        Brand brand = brandRepository.findById(id).orElseThrow();
+
+        GetByIdBrandResponse response = this.modelMapperService.forResponse().map(brand,GetByIdBrandResponse.class);
+
+        return response;
+    }
+
+    @Override
+    public boolean existsByBrandId(int brandId) {
+        return brandRepository.existsById(brandId);
     }
 }
