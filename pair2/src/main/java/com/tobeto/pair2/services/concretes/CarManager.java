@@ -89,6 +89,10 @@ public class CarManager implements CarService {
 
     }
 
+    @Override
+    public boolean existsByCarId(int carId) {
+        return carRepository.existsById(carId);
+    }
 
 
 }

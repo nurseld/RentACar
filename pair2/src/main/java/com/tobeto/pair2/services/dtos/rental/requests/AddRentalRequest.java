@@ -4,8 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/*@Data
+import java.time.LocalDate;
+
+@Data
 @AllArgsConstructor
-@NoArgsConstructor*/
+@NoArgsConstructor
 public class AddRentalRequest {
+
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private int carId;
+    private int userId;
+
+
+
 }
