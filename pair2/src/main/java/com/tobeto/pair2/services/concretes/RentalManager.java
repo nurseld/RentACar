@@ -15,6 +15,7 @@ import com.tobeto.pair2.services.dtos.rental.requests.DeleteRentalRequest;
 import com.tobeto.pair2.services.dtos.rental.requests.UpdateRentalRequest;
 import com.tobeto.pair2.services.dtos.rental.responses.GetAllRentalResponse;
 import com.tobeto.pair2.services.dtos.rental.responses.GetByIdRentalResponse;
+import com.tobeto.pair2.services.dtos.rental.responses.GetDeleteRentalResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -132,6 +133,11 @@ public class RentalManager implements RentalService {
     @Override
     public void delete(DeleteRentalRequest request) {
 
+        Rental rental = this.modelMapperService.forRequest().map(request, Rental.class);
+
+        this.rentalRepository.delete(rental);
+
+
     }
 
     public List<GetAllRentalResponse> getAll() {
@@ -146,6 +152,8 @@ public class RentalManager implements RentalService {
 
     @Override
     public GetByIdRentalResponse getById(int id) {
-        return null;
+        Rental rental = rentalRepository.findById(id).orElseThrow();
+        GetByIdRentalResponse response = this.modelMapperService.forResponse().map(rental,GetByIdRentalResponse.class);
+        return response;
     }
 }

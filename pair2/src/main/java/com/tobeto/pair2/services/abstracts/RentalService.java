@@ -6,6 +6,7 @@ import com.tobeto.pair2.services.dtos.rental.requests.DeleteRentalRequest;
 import com.tobeto.pair2.services.dtos.rental.requests.UpdateRentalRequest;
 import com.tobeto.pair2.services.dtos.rental.responses.GetAllRentalResponse;
 import com.tobeto.pair2.services.dtos.rental.responses.GetByIdRentalResponse;
+import com.tobeto.pair2.services.dtos.rental.responses.GetDeleteRentalResponse;
 
 import java.util.List;
 

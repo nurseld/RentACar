@@ -12,7 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdateBrandRequest {
     @Positive
-    private int id;
+    private Integer id;
+
     @NotBlank
     @Size(min = 2, message = "The Brand cannot be less than 2 characters.")
     private String name;
