@@ -2,11 +2,9 @@ package com.tobeto.pair2.controllers;
 
 import com.tobeto.pair2.services.abstracts.CarService;
 import com.tobeto.pair2.services.dtos.car.requests.AddCarRequest;
-import com.tobeto.pair2.services.dtos.car.requests.DeleteCarRequest;
 import com.tobeto.pair2.services.dtos.car.requests.UpdateCarRequest;
 import com.tobeto.pair2.services.dtos.car.responses.GetAllCarResponse;
 import com.tobeto.pair2.services.dtos.car.responses.GetByIdCarResponse;
-import com.tobeto.pair2.services.dtos.car.responses.GetDeleteCarResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +27,9 @@ public class CarsController {
         carService.update(request);
     }
 
-    @DeleteMapping("/delete")
-    public GetDeleteCarResponse delete(@RequestBody DeleteCarRequest request) {
-        return carService.delete(request);
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id) {
+        carService.delete(id);
     }
 
     @GetMapping("/getAll")

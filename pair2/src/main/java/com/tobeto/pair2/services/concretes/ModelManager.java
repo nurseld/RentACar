@@ -1,12 +1,10 @@
 package com.tobeto.pair2.services.concretes;
 
 import com.tobeto.pair2.core.utilities.mapper.ModelMapperService;
-import com.tobeto.pair2.entitites.Car;
 import com.tobeto.pair2.entitites.Model;
 import com.tobeto.pair2.repositories.ModelRepository;
 import com.tobeto.pair2.services.abstracts.BrandService;
 import com.tobeto.pair2.services.abstracts.ModelService;
-import com.tobeto.pair2.services.dtos.car.responses.GetDeleteCarResponse;
 import com.tobeto.pair2.services.dtos.model.requests.AddModelRequest;
 import com.tobeto.pair2.services.dtos.model.requests.DeleteModelRequest;
 import com.tobeto.pair2.services.dtos.model.requests.UpdateModelRequest;
