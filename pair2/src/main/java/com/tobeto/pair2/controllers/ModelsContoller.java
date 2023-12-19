@@ -31,6 +31,7 @@ public class ModelsContoller {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id) {
         modelService.delete(id);
+   
     }
 
     @GetMapping("/getAll")
