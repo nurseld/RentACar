@@ -28,10 +28,11 @@ public class UpdateRentalRequest {
     @Nullable
     private Integer endKilometer;
 
-//    @Positive
-//    private double totalPrice;
+    @Positive
+    private double totalPrice;
 
     private int carId;
+
     private int userId;
 }
 

@@ -20,7 +20,7 @@ public class Car {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "kilometer")
     private int kilometer;

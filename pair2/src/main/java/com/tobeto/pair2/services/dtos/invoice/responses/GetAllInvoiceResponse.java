@@ -4,8 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/*@Data
+import java.time.LocalDate;
+
+@Data
 @AllArgsConstructor
-@NoArgsConstructor*/
-public class GetListInvoiceResponse {
+@NoArgsConstructor
+public class GetAllInvoiceResponse {
+
+    private LocalDate createDate;
+
+    private int rentalId;
 }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/colors")
+@RequestMapping("/api/colors")
 @AllArgsConstructor
 public class ColorsController {
 
@@ -24,9 +24,9 @@ public class ColorsController {
         colorService.add(request);
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@RequestBody DeleteColorRequest request){
-        colorService.delete(request);
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id){
+        colorService.delete(id);
     }
 
     @PutMapping("/update")
@@ -39,7 +39,7 @@ public class ColorsController {
         return colorService.getAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/getById/{id}")
     public GetByIdColorResponse getById(@PathVariable int id) {
         return colorService.getById(id);
     }

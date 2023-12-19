@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
 public class UpdateCarRequest {
 
     @Positive(message = "Doğru id girişi yapınız")
-    private int id;
+    private Integer id;
 
     @Positive(message = "Kilometer should be a greater than 0.")
     private int kilometer;
 
-    @NotBlank(message = "Plaka boş olamaz!")
+    @NotBlank(message = "The plate cannot be empty!")
     @Pattern(regexp = "^(0[1-9]|[1-7][0-9]|8[01])(([A-Z])(\\d{4,5})|([A-Z]{2})(\\d{3,4})|([A-Z]{3})(\\d{2,3}))$", message = " Plate should be a valid Turkish plate format.")
     private String plate;
 

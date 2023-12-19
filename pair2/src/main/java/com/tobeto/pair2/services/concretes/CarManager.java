@@ -7,11 +7,9 @@ import com.tobeto.pair2.services.abstracts.CarService;
 import com.tobeto.pair2.services.abstracts.ColorService;
 import com.tobeto.pair2.services.abstracts.ModelService;
 import com.tobeto.pair2.services.dtos.car.requests.AddCarRequest;
-import com.tobeto.pair2.services.dtos.car.requests.DeleteCarRequest;
 import com.tobeto.pair2.services.dtos.car.requests.UpdateCarRequest;
 import com.tobeto.pair2.services.dtos.car.responses.GetAllCarResponse;
 import com.tobeto.pair2.services.dtos.car.responses.GetByIdCarResponse;
-import com.tobeto.pair2.services.dtos.car.responses.GetDeleteCarResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -54,27 +52,19 @@ public class CarManager implements CarService {
     }
 
     @Override
-    public GetDeleteCarResponse delete(DeleteCarRequest request) {
+    public void delete(Integer id) {
 
-        Car car = carRepository.findById(request.getId()).orElseThrow();
-
-        GetDeleteCarResponse response = this.modelMapperService.forResponse().map(car, GetDeleteCarResponse.class);
-
+        Car car = this.carRepository.findById(id).orElseThrow();
         this.carRepository.delete(car);
-
-        return response;
-
-
     }
+
 
     @Override
     public List<GetAllCarResponse> getAll() {
 
         List<Car> cars = carRepository.findAll();
-
         List<GetAllCarResponse> carResponses = cars.stream()
                 .map(car -> this.modelMapperService.forResponse().map(car,GetAllCarResponse.class)).toList();
-
         return carResponses;
     }
 
@@ -82,15 +72,14 @@ public class CarManager implements CarService {
     public GetByIdCarResponse getById(int id) {
 
         Car car = carRepository.findById(id).orElseThrow();
-
         GetByIdCarResponse response = this.modelMapperService.forResponse().map(car,GetByIdCarResponse.class);
-
         return response;
 
     }
 
     @Override
     public boolean existsByCarId(int carId) {
+
         return carRepository.existsById(carId);
     }
 

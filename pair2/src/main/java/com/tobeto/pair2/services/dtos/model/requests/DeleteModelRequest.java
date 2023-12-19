@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DeleteModelRequest {
-    private int id;
-    private String name;
-    private int brandId;
+
+    private Integer id;
+
 }

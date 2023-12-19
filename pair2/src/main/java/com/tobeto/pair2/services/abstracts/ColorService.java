@@ -12,7 +12,7 @@ public interface ColorService {
 
     void add(AddColorRequest request);
     void update(UpdateColorRequest request);
-    void delete(DeleteColorRequest request);
+    void delete(Integer id);
     List<GetAllColorResponse> getAll();
     GetByIdColorResponse getById(int id);
     boolean existsByColorId(int colorId);

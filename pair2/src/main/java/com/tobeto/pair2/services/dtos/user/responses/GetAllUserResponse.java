@@ -4,8 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/*@Data
+import java.time.LocalDate;
+
+@Data
 @AllArgsConstructor
-@NoArgsConstructor*/
+@NoArgsConstructor
 public class GetAllUserResponse {
+
+    private String name;
+
+    private String surname;
+
+    private String email;
+
+    private LocalDate birthDate;
+
 }

@@ -11,9 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddModelRequest {
+
     @NotBlank
     @Size(min = 2, message = "The Model cannot be less than 2 characters.")
     private String name;
+
     private int brandId;
 
 }
