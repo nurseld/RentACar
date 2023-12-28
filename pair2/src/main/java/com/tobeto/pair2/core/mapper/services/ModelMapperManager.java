@@ -1,4 +1,4 @@
-package com.tobeto.pair2.core.utilities.mapper;
+package com.tobeto.pair2.core.mapper.services;
 
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;

@@ -1,4 +1,4 @@
-package com.tobeto.pair2.entitites;
+package com.tobeto.pair2.entitites.concretes;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

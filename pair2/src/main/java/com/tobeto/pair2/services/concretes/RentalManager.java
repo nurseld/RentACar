@@ -1,7 +1,8 @@
 package com.tobeto.pair2.services.concretes;
 
-import com.tobeto.pair2.core.utilities.mapper.ModelMapperService;
-import com.tobeto.pair2.entitites.Rental;
+import com.tobeto.pair2.core.exceptions.BusinessException;
+import com.tobeto.pair2.core.mapper.services.ModelMapperService;
+import com.tobeto.pair2.entitites.concretes.Rental;
 import com.tobeto.pair2.repositories.RentalRepository;
 import com.tobeto.pair2.services.abstracts.CarService;
 import com.tobeto.pair2.services.abstracts.RentalService;
@@ -34,24 +35,24 @@ public class RentalManager implements RentalService {
         LocalDate startDate = request.getStartDate();
 
         if (startDate.isBefore(LocalDate.now())) {
-            throw new RuntimeException("The start date of the rental can not be earlier than today.");
+            throw new BusinessException("The start date of the rental can not be earlier than today.");
         }
 
         LocalDate endDate = request.getEndDate();
         if (endDate.isBefore(startDate)) {
-            throw new RuntimeException("The end date of the rental can not be later than the start date.");
+            throw new BusinessException("The end date of the rental can not be later than the start date.");
         }
 
         if (startDate.plusDays(25).isBefore(endDate)) {
-            throw new RuntimeException("A car can be rented for 25 days at most.");
+            throw new BusinessException("A car can be rented for 25 days at most.");
         }
 
         if(!userService.existsByUserId(request.getUserId())) {
-            throw new RuntimeException("The User must exist in the database.");
+            throw new BusinessException("The User must exist in the database.");
         }
 
         if(!carService.existsByCarId(request.getCarId())) {
-            throw new RuntimeException("The Car must exist in the database.");
+            throw new BusinessException("The Car must exist in the database.");
         }
 
 
@@ -80,30 +81,30 @@ public class RentalManager implements RentalService {
     public void update(UpdateRentalRequest request) {
 
         if(!rentalRepository.existsById(request.getId())){
-            throw new RuntimeException("RentalId not found");
+            throw new BusinessException("RentalId not found");
         }
 
         LocalDate startDate = request.getStartDate();
 
         if (startDate.isBefore(LocalDate.now())) {
-            throw new RuntimeException("The start date of the rental can not be earlier than today.");
+            throw new BusinessException("The start date of the rental can not be earlier than today.");
         }
 
         LocalDate endDate = request.getEndDate();
         if (endDate.isBefore(startDate)) {
-            throw new RuntimeException("The end date of the rental can not be later than the start date.");
+            throw new BusinessException("The end date of the rental can not be later than the start date.");
         }
 
         if (startDate.plusDays(25).isBefore(endDate)) {
-            throw new RuntimeException("A car can be rented for 25 days at most.");
+            throw new BusinessException("A car can be rented for 25 days at most.");
         }
 
         if(!userService.existsByUserId(request.getUserId())) {
-            throw new RuntimeException("The User must exist in the database.");
+            throw new BusinessException("The User must exist in the database.");
         }
 
         if(!carService.existsByCarId(request.getCarId())) {
-            throw new RuntimeException("The Car must exist in the database.");
+            throw new BusinessException("The Car must exist in the database.");
         }
 
 

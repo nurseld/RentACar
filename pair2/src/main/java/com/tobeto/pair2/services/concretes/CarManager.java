@@ -1,7 +1,8 @@
 package com.tobeto.pair2.services.concretes;
 
-import com.tobeto.pair2.core.utilities.mapper.ModelMapperService;
-import com.tobeto.pair2.entitites.Car;
+import com.tobeto.pair2.core.exceptions.BusinessException;
+import com.tobeto.pair2.core.mapper.services.ModelMapperService;
+import com.tobeto.pair2.entitites.concretes.Car;
 import com.tobeto.pair2.repositories.CarRepository;
 import com.tobeto.pair2.services.abstracts.CarService;
 import com.tobeto.pair2.services.abstracts.ColorService;
@@ -27,15 +28,15 @@ public class CarManager implements CarService {
     public void add(AddCarRequest request) {
 
         if(carRepository.existsCarByPlate(request.getPlate())){
-            throw new RuntimeException("Another car cannot be added with the same license plate.");
+            throw new BusinessException("Another car cannot be added with the same license plate.");
         }
 
         if(!modelService.existsByModelId(request.getModelId())) {
-            throw new RuntimeException("The ModelId must exist in the database.");
+            throw new BusinessException("The ModelId must exist in the database.");
         }
 
         if(!colorService.existsByColorId(request.getColorId())) {
-            throw new RuntimeException("The ColorId must exist in the database.");
+            throw new BusinessException("The ColorId must exist in the database.");
         }
 
         Car car = this.modelMapperService.forRequest().map(request, Car.class);

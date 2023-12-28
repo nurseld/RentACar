@@ -1,7 +1,8 @@
 package com.tobeto.pair2.services.concretes;
 
-import com.tobeto.pair2.core.utilities.mapper.ModelMapperService;
-import com.tobeto.pair2.entitites.Model;
+import com.tobeto.pair2.core.exceptions.BusinessException;
+import com.tobeto.pair2.core.mapper.services.ModelMapperService;
+import com.tobeto.pair2.entitites.concretes.Model;
 import com.tobeto.pair2.repositories.ModelRepository;
 import com.tobeto.pair2.services.abstracts.BrandService;
 import com.tobeto.pair2.services.abstracts.ModelService;
@@ -26,11 +27,11 @@ public class ModelManager implements ModelService {
     public void add(AddModelRequest request) {
 
         if (modelRepository.existsModelByName(request.getName())) {
-            throw new RuntimeException("This model already exists in the database.");
+            throw new BusinessException("This model already exists in the database.");
         }
 
         if(!brandService.existsByBrandId(request.getBrandId())) {
-            throw new RuntimeException("The ModelId must exist in the database.");
+            throw new BusinessException("The ModelId must exist in the database.");
         }
 
         Model model = this.modelMapperService.forRequest().map(request, Model.class);
