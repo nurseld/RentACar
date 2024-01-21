@@ -1,6 +1,5 @@
 package com.tobeto.pair2.entitites.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tobeto.pair2.entitites.abstracts.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,22 +7,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
-@Table(name = "brands")
+@Table(name = "corporate_customers")
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Brand extends BaseEntity {
+public class CorporateCustomer extends BaseEntity {
 
+    @Column(name="company_name")
+    private String companyName;
+    @Column(name="tax_no")
+    private String taxNo;
 
-    @Column(name = "name")
-    private String name;
-
-    @OneToMany(mappedBy = "brand")
-    @JsonIgnore
-    private List<Model> models;
-
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
