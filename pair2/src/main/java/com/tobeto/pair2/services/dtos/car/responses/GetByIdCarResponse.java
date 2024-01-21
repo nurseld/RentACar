@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetByIdCarResponse {
 
+    private  int id;
+
     private int kilometer;
 
     private String plate;
@@ -17,6 +19,8 @@ public class GetByIdCarResponse {
     private int year;
 
     private double dailyPrice;
+
+    private String imagePath;
 
     private String modelName;
 

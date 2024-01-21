@@ -17,9 +17,14 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Invoice extends BaseEntity {
 
+    @Column(name="invoice_no")
+    private String invoiceNo;
 
-    @Column(name = "create_date")
-    private LocalDate createDate;
+    @Column(name="total_price")
+    private Float totalPrice;
+
+//    @Column(name="tax_rate")
+//    private Float taxRate;
 
     @ManyToOne
     @JoinColumn(name = "rental_id")

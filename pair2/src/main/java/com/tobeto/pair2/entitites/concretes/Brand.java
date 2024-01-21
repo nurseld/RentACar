@@ -22,6 +22,9 @@ public class Brand extends BaseEntity {
     @Column(name = "name")
     private String name;
 
+    @Column(name="logo_path")
+    private String logoPath;
+
     @OneToMany(mappedBy = "brand")
     @JsonIgnore
     private List<Model> models;

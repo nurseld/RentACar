@@ -12,4 +12,6 @@ public class GetAllBrandResponse {
     private Integer id;
 
     private String name;
+
+    private String logoPath;
 }
