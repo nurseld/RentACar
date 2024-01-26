@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetByIdCarResponse {
 
-    private  int id;
+    private int id;
 
     private int kilometer;
 
@@ -25,4 +25,7 @@ public class GetByIdCarResponse {
     private String modelName;
 
     private String colorName;
+
+    private String brandName;
+
 }
