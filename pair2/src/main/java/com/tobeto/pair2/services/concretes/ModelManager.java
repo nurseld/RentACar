@@ -1,16 +1,14 @@
 package com.tobeto.pair2.services.concretes;
 
-import com.tobeto.pair2.core.exceptions.BusinessException;
 import com.tobeto.pair2.core.mapper.services.ModelMapperService;
 import com.tobeto.pair2.entitites.concretes.Model;
 import com.tobeto.pair2.repositories.ModelRepository;
-import com.tobeto.pair2.services.abstracts.BrandService;
 import com.tobeto.pair2.services.abstracts.ModelService;
 import com.tobeto.pair2.services.dtos.model.requests.AddModelRequest;
 import com.tobeto.pair2.services.dtos.model.requests.UpdateModelRequest;
 import com.tobeto.pair2.services.dtos.model.responses.GetAllModelResponse;
 import com.tobeto.pair2.services.dtos.model.responses.GetByIdModelResponse;
-
+import com.tobeto.pair2.services.rules.ModelBusinessRules;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,17 +20,13 @@ public class ModelManager implements ModelService {
 
     private final ModelRepository modelRepository;
     private final ModelMapperService modelMapperService;
-    private final BrandService brandService;
+    private final ModelBusinessRules modelBusinessRules;
+
 
     public void add(AddModelRequest request) {
 
-        if (modelRepository.existsModelByName(request.getName())) {
-            throw new BusinessException("This model already exists in the database.");
-        }
-
-        if(!brandService.existsByBrandId(request.getBrandId())) {
-            throw new BusinessException("The ModelId must exist in the database.");
-        }
+       this.modelBusinessRules.checkIfModelNameExists(request.getName());
+       this.modelBusinessRules.checkIfBrandIdExits(request.getBrandId());
 
         Model model = this.modelMapperService.forRequest().map(request, Model.class);
         this.modelRepository.save(model);
