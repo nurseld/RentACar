@@ -1,6 +1,5 @@
 package com.tobeto.pair2.services.concretes;
 
-import com.tobeto.pair2.core.exceptions.BusinessException;
 import com.tobeto.pair2.core.mapper.services.ModelMapperService;
 import com.tobeto.pair2.entitites.concretes.Color;
 import com.tobeto.pair2.repositories.ColorRepository;
@@ -9,6 +8,7 @@ import com.tobeto.pair2.services.dtos.color.requests.AddColorRequest;
 import com.tobeto.pair2.services.dtos.color.requests.UpdateColorRequest;
 import com.tobeto.pair2.services.dtos.color.responses.GetAllColorResponse;
 import com.tobeto.pair2.services.dtos.color.responses.GetByIdColorResponse;
+import com.tobeto.pair2.services.rules.ColorBusinessRules;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +20,12 @@ public class ColorManager implements ColorService {
 
     private ColorRepository colorRepository;
     private final ModelMapperService modelMapperService;
+    private final ColorBusinessRules colorBusinessRules;
 
     @Override
     public void add(AddColorRequest request) {
 
-        if(colorRepository.existsColorByName(request.getName().toLowerCase())){
-            throw new BusinessException("This color already exists in the database.");
-        }
+        this.colorBusinessRules.checkIfColorNameExists(request.getName());
 
         Color color = this.modelMapperService.forRequest().map(request, Color.class);
         this.colorRepository.save(color);
