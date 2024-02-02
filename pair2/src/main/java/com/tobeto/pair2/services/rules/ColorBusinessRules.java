@@ -2,6 +2,7 @@ package com.tobeto.pair2.services.rules;
 
 import com.tobeto.pair2.core.exceptions.BusinessException;
 import com.tobeto.pair2.repositories.ColorRepository;
+import com.tobeto.pair2.services.constants.BusinessMessages;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ public class ColorBusinessRules {
 
     public void checkIfColorNameExists(String name){
         if(colorRepository.existsColorByName(name)){
-            throw new BusinessException("This color already exists in the database.");
+            throw new BusinessException(BusinessMessages.Color.SAME_COLOR_EXISTS);
         }
     }
 }
