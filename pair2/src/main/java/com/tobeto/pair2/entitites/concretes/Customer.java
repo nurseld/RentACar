@@ -29,7 +29,6 @@ public class Customer extends BaseEntity {
     @Column(name="national_id_no")
     private String nationalIdentity;
 
-
     @ManyToOne()
     @JoinColumn(name="user_id")
     private User user;
