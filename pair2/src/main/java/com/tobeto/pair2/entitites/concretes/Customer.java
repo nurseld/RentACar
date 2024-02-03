@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Table(name = "customers")
 @Entity
 @Getter
@@ -20,6 +22,13 @@ public class Customer extends BaseEntity {
 
     @Column(name="last_name")
     private String lastName;
+
+    @Column(name="birth_date")
+    private LocalDate birthDate;
+
+    @Column(name="national_id_no")
+    private String nationalIdentity;
+
 
     @ManyToOne()
     @JoinColumn(name="user_id")
