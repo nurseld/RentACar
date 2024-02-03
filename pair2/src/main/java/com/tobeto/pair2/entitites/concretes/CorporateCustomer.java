@@ -17,8 +17,13 @@ public class CorporateCustomer extends BaseEntity {
 
     @Column(name="company_name")
     private String companyName;
+
     @Column(name="tax_no")
     private String taxNo;
+
+    @Column(name="contact_name")
+    private String contactName;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")
