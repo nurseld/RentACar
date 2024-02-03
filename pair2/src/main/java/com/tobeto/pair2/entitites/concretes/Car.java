@@ -1,6 +1,7 @@
-package com.tobeto.pair2.entitites;
+package com.tobeto.pair2.entitites.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tobeto.pair2.entitites.abstracts.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,12 +16,8 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Car {
+public class Car extends BaseEntity {
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
     @Column(name = "kilometer")
     private int kilometer;
@@ -33,6 +30,9 @@ public class Car {
 
     @Column(name = "daily_price")
     private double dailyPrice;
+
+    @Column(name="image_path")
+    private String imagePath;
 
     @ManyToOne
     @JoinColumn(name = "model_id")

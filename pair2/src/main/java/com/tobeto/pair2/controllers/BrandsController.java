@@ -33,7 +33,7 @@ public class BrandsController {
         brandService.update(request);
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public List<GetAllBrandResponse> getAll() {
         return brandService.getAll();
     }

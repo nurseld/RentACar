@@ -1,14 +1,14 @@
 package com.tobeto.pair2.services.concretes;
 
-import com.tobeto.pair2.core.utilities.mapper.ModelMapperService;
-import com.tobeto.pair2.entitites.Brand;
+import com.tobeto.pair2.core.mapper.services.ModelMapperService;
+import com.tobeto.pair2.entitites.concretes.Brand;
 import com.tobeto.pair2.repositories.BrandRepository;
 import com.tobeto.pair2.services.abstracts.BrandService;
 import com.tobeto.pair2.services.dtos.brand.requests.AddBrandRequest;
-import com.tobeto.pair2.services.dtos.brand.requests.DeleteBrandRequest;
 import com.tobeto.pair2.services.dtos.brand.requests.UpdateBrandRequest;
-import com.tobeto.pair2.services.dtos.brand.responses.GetByIdBrandResponse;
 import com.tobeto.pair2.services.dtos.brand.responses.GetAllBrandResponse;
+import com.tobeto.pair2.services.dtos.brand.responses.GetByIdBrandResponse;
+import com.tobeto.pair2.services.rules.BrandBusinessRules;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +20,13 @@ public class BrandManager implements BrandService {
 
     private final BrandRepository brandRepository;
     private final ModelMapperService modelMapperService;
+    private BrandBusinessRules brandBusinessRules;
 
 
     @Override
     public void add(AddBrandRequest request) {
 
-        if (brandRepository.existsBrandByName(request.getName())) {
-            throw new RuntimeException("This brand already exists in the database.");
-        }
+        this.brandBusinessRules.checkIfBrandNameExists(request.getName());
 
         Brand brand = this.modelMapperService.forRequest().map(request, Brand.class);
         this.brandRepository.save(brand);

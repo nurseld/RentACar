@@ -11,7 +11,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class GetAllInvoiceResponse {
 
-    private LocalDate createDate;
+//    private LocalDate createDate;
+
+    private String  invoiceNo;
+
+    private Float totalPrice;
 
     private int rentalId;
 }

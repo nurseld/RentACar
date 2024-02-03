@@ -1,7 +1,7 @@
 package com.tobeto.pair2.services.concretes;
 
-import com.tobeto.pair2.core.utilities.mapper.ModelMapperService;
-import com.tobeto.pair2.entitites.User;
+import com.tobeto.pair2.core.mapper.services.ModelMapperService;
+import com.tobeto.pair2.entitites.concretes.User;
 import com.tobeto.pair2.repositories.UserRepository;
 import com.tobeto.pair2.services.abstracts.UserService;
 import com.tobeto.pair2.services.dtos.user.requests.AddUserRequest;

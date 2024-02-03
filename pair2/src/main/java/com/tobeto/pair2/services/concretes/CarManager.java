@@ -1,15 +1,14 @@
 package com.tobeto.pair2.services.concretes;
 
-import com.tobeto.pair2.core.utilities.mapper.ModelMapperService;
-import com.tobeto.pair2.entitites.Car;
+import com.tobeto.pair2.core.mapper.services.ModelMapperService;
+import com.tobeto.pair2.entitites.concretes.Car;
 import com.tobeto.pair2.repositories.CarRepository;
 import com.tobeto.pair2.services.abstracts.CarService;
-import com.tobeto.pair2.services.abstracts.ColorService;
-import com.tobeto.pair2.services.abstracts.ModelService;
 import com.tobeto.pair2.services.dtos.car.requests.AddCarRequest;
 import com.tobeto.pair2.services.dtos.car.requests.UpdateCarRequest;
 import com.tobeto.pair2.services.dtos.car.responses.GetAllCarResponse;
 import com.tobeto.pair2.services.dtos.car.responses.GetByIdCarResponse;
+import com.tobeto.pair2.services.rules.CarBusinessRules;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,23 +19,14 @@ import java.util.List;
 public class CarManager implements CarService {
     private final CarRepository carRepository;
     private final ModelMapperService modelMapperService;
-    private final ModelService modelService;
-    private final ColorService colorService;
+    private final CarBusinessRules carBusinessRules;
 
     @Override
     public void add(AddCarRequest request) {
 
-        if(carRepository.existsCarByPlate(request.getPlate())){
-            throw new RuntimeException("Another car cannot be added with the same license plate.");
-        }
-
-        if(!modelService.existsByModelId(request.getModelId())) {
-            throw new RuntimeException("The ModelId must exist in the database.");
-        }
-
-        if(!colorService.existsByColorId(request.getColorId())) {
-            throw new RuntimeException("The ColorId must exist in the database.");
-        }
+       this.carBusinessRules.checkIfCarPlateExists(request.getPlate());
+       this.carBusinessRules.checkIfModelIdExists(request.getModelId());
+       this.carBusinessRules.checkIfColorIdExists(request.getColorId());
 
         Car car = this.modelMapperService.forRequest().map(request, Car.class);
         this.carRepository.save(car);

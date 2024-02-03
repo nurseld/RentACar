@@ -34,7 +34,7 @@ public class InvoicesController {
         invoiceService.update(request);
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public List<GetAllInvoiceResponse> getAll() {
         return invoiceService.getAll();
     }
