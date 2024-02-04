@@ -5,10 +5,15 @@ import com.tobeto.pair2.entitites.concretes.User;
 import com.tobeto.pair2.repositories.UserRepository;
 import com.tobeto.pair2.services.abstracts.UserService;
 import com.tobeto.pair2.services.dtos.user.requests.AddUserRequest;
+import com.tobeto.pair2.services.dtos.user.requests.CreateUserRequest;
+import com.tobeto.pair2.services.dtos.user.requests.LoginRequest;
 import com.tobeto.pair2.services.dtos.user.requests.UpdateUserRequest;
 import com.tobeto.pair2.services.dtos.user.responses.GetAllUserResponse;
 import com.tobeto.pair2.services.dtos.user.responses.GetByIdUserResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +24,7 @@ public class UserManager implements UserService {
 
     private final UserRepository userRepository;
     private final ModelMapperService modelMapperService;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public void add(AddUserRequest request) {
@@ -59,7 +65,30 @@ public class UserManager implements UserService {
     }
 
     @Override
+    public void register(CreateUserRequest createUserRequest) {
+
+        User user = User
+                .builder()
+                .username(createUserRequest.getUsername())
+                .email(createUserRequest.getEmail())
+                .authorities(createUserRequest.getRoles())
+                .password(passwordEncoder.encode(createUserRequest.getPassword()))
+                .build();
+        userRepository.save(user);
+    }
+
+    @Override
+    public String login(LoginRequest loginRequest) {
+        return "";
+    }
+
+    @Override
     public boolean existsByUserId(int userId) {
         return userRepository.existsById(userId) ;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("No user found!"));
     }
 }
