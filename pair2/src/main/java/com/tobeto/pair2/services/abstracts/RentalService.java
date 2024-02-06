@@ -5,12 +5,13 @@ import com.tobeto.pair2.services.dtos.rental.requests.AddRentalRequest;
 import com.tobeto.pair2.services.dtos.rental.requests.UpdateRentalRequest;
 import com.tobeto.pair2.services.dtos.rental.responses.GetAllRentalResponse;
 import com.tobeto.pair2.services.dtos.rental.responses.GetByIdRentalResponse;
+import com.tobeto.pair2.services.dtos.rental.responses.OrderResponse;
 
 import java.util.List;
 
 public interface RentalService {
 
-    void add(AddRentalRequest request);
+    OrderResponse add(AddRentalRequest request);
     void update(UpdateRentalRequest request);
     void delete(Integer id);
     List<GetAllRentalResponse> getAll();

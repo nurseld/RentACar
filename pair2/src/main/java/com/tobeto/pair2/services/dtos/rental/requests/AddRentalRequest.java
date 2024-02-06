@@ -15,6 +15,10 @@ public class AddRentalRequest {
 
     private LocalDate endDate;
 
+    private String pickUpLocation;
+
+    private String dropOffLocation;
+
     private int carId;
 
     private int userId;

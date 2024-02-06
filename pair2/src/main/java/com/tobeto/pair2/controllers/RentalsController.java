@@ -5,6 +5,7 @@ import com.tobeto.pair2.services.dtos.rental.requests.AddRentalRequest;
 import com.tobeto.pair2.services.dtos.rental.requests.UpdateRentalRequest;
 import com.tobeto.pair2.services.dtos.rental.responses.GetAllRentalResponse;
 import com.tobeto.pair2.services.dtos.rental.responses.GetByIdRentalResponse;
+import com.tobeto.pair2.services.dtos.rental.responses.OrderResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,8 @@ public class RentalsController {
     private final RentalService rentalService;
 
     @PostMapping("/add")
-    public void add(@RequestBody @Valid AddRentalRequest request) {
-        rentalService.add(request);
+    public OrderResponse add(@RequestBody @Valid AddRentalRequest request) {
+        return rentalService.add(request);
     }
 
     @DeleteMapping("/{id}")
