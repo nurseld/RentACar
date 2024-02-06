@@ -21,10 +21,10 @@ public class InvoiceManager implements InvoiceService {
     private final ModelMapperService modelMapperService;
 
     @Override
-    public void add(AddInvoiceRequest request) {
+    public Invoice add(AddInvoiceRequest request) {
 
         Invoice invoice = this.modelMapperService.forRequest().map(request,Invoice.class);
-        this.invoiceRepository.save(invoice);
+        return this.invoiceRepository.save(invoice);
     }
 
     @Override

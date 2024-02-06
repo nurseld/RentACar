@@ -14,4 +14,6 @@ public class AddInvoiceRequest {
     private LocalDate createDate;
 
     private int rentalId;
+
+    private Double totalPrice;
 }
