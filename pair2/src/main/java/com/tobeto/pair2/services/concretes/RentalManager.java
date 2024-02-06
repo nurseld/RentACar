@@ -2,20 +2,26 @@ package com.tobeto.pair2.services.concretes;
 
 import com.tobeto.pair2.core.exceptions.BusinessException;
 import com.tobeto.pair2.core.mapper.services.ModelMapperService;
+import com.tobeto.pair2.entitites.concretes.Invoice;
 import com.tobeto.pair2.entitites.concretes.Rental;
 import com.tobeto.pair2.repositories.RentalRepository;
 import com.tobeto.pair2.services.abstracts.CarService;
+import com.tobeto.pair2.services.abstracts.InvoiceService;
 import com.tobeto.pair2.services.abstracts.RentalService;
 import com.tobeto.pair2.services.abstracts.UserService;
 import com.tobeto.pair2.services.dtos.car.responses.GetByIdCarResponse;
+import com.tobeto.pair2.services.dtos.invoice.requests.AddInvoiceRequest;
 import com.tobeto.pair2.services.dtos.rental.requests.AddRentalRequest;
 import com.tobeto.pair2.services.dtos.rental.requests.UpdateRentalRequest;
 import com.tobeto.pair2.services.dtos.rental.responses.GetAllRentalResponse;
 import com.tobeto.pair2.services.dtos.rental.responses.GetByIdRentalResponse;
+import com.tobeto.pair2.services.dtos.rental.responses.OrderResponse;
 import com.tobeto.pair2.services.rules.RentalBusinessRules;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
@@ -28,9 +34,11 @@ public class RentalManager implements RentalService {
     private final RentalBusinessRules rentalBusinessRules;
     private final CarService carService;
     private final UserService userService;
+    private final InvoiceService invoiceService;
 
     @Override
-    public void add(AddRentalRequest request) {
+    @Transactional
+    public OrderResponse add(AddRentalRequest request) {
 
 
         this.rentalBusinessRules.checkIfStartDateBeforeToday(request.getStartDate());
@@ -45,16 +53,20 @@ public class RentalManager implements RentalService {
         GetByIdCarResponse carId = carService.getById(request.getCarId());
         rental.setStartKilometer(carId.getKilometer());
 
+        Double totalPrice;
         if(rental.getReturnDate() == null){
-
-            Double totalPrice = ChronoUnit.DAYS.between(rental.getStartDate(),rental.getEndDate())* carId.getDailyPrice();
+            totalPrice = ChronoUnit.DAYS.between(rental.getStartDate(),rental.getEndDate())* carId.getDailyPrice();
             rental.setTotalPrice(totalPrice);
         } else{
-            Double totalPrice = ChronoUnit.DAYS.between(rental.getStartDate(),rental.getReturnDate())* carId.getDailyPrice();
+            totalPrice = ChronoUnit.DAYS.between(rental.getStartDate(),rental.getReturnDate())* carId.getDailyPrice();
             rental.setTotalPrice(totalPrice);
         }
 
-        this.rentalRepository.save(rental);
+        Rental createdRental = this.rentalRepository.save(rental);
+        Invoice createdInvoice = invoiceService.add(new AddInvoiceRequest(LocalDate.now(),createdRental.getId(),totalPrice));
+        OrderResponse orderResponse = new OrderResponse(createdRental,createdInvoice);
+        return orderResponse;
+
 
 
 

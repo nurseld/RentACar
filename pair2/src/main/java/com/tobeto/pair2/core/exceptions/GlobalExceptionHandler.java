@@ -37,5 +37,12 @@ public class GlobalExceptionHandler {
         return validationProblemDetails;
     }
 
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ProblemDetails handleException( Exception exception){
+        ProblemDetails problemDetails = new ProblemDetails();
+        problemDetails.setMessage(exception.getMessage());
+        return problemDetails;
+    }
 
 }
