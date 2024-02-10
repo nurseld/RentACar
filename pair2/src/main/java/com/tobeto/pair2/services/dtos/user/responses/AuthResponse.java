@@ -1,13 +1,16 @@
-package com.tobeto.pair2.services.dtos.corporatecustomer.requests;
+package com.tobeto.pair2.services.dtos.user.responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class DeleteCorporateCustomerRequest {
+public class AuthResponse {
 
+    private String token;
     private int id;
+    private String role;
+
 }

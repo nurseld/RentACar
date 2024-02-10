@@ -2,10 +2,7 @@ package com.tobeto.pair2.entitites.concretes;
 
 import com.tobeto.pair2.entitites.abstracts.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -15,6 +12,7 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Customer extends BaseEntity {
 
     @Column(name="first_name")
@@ -28,6 +26,9 @@ public class Customer extends BaseEntity {
 
     @Column(name="national_id_no")
     private String nationalIdentity;
+
+    @Column(name = "phoneNumber")
+    private String phoneNumber;
 
     @ManyToOne()
     @JoinColumn(name="user_id")

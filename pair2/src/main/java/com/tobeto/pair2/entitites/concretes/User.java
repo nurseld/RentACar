@@ -19,6 +19,8 @@ import java.util.List;
 @Builder
 public class User extends BaseEntity implements UserDetails {
 
+
+
     @Column(name = "username")
     private String username;
 
@@ -38,6 +40,11 @@ public class User extends BaseEntity implements UserDetails {
     @Enumerated(EnumType.STRING)
     private List<Role> authorities;
 
+
+    public User(Integer id)
+    {
+        setId(id);
+    }
 
     @Override
     public boolean isAccountNonExpired() {

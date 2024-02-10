@@ -2,6 +2,7 @@ package com.tobeto.pair2.services.concretes;
 
 import com.tobeto.pair2.core.mapper.services.ModelMapperService;
 import com.tobeto.pair2.entitites.concretes.Customer;
+import com.tobeto.pair2.entitites.concretes.User;
 import com.tobeto.pair2.repositories.CustomerRepository;
 import com.tobeto.pair2.services.abstracts.CustomerService;
 import com.tobeto.pair2.services.dtos.customer.requests.AddCustomerRequest;
@@ -20,10 +21,19 @@ public class CustomerManager implements CustomerService {
     private final CustomerRepository customerRepository;
     private final ModelMapperService modelMapperService;
 
+
+
+
     @Override
     public void add(AddCustomerRequest request) {
-
-        Customer customer = this.modelMapperService.forRequest().map(request,Customer.class);
+        Customer customer = Customer.builder()
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
+                .nationalIdentity(request.getNationalIdNo())
+                .birthDate(request.getBirthDate())
+                .phoneNumber(request.getPhoneNumber())
+                .user(new User(request.getUserId()))
+                .build();
         this.customerRepository.save(customer);
 
     }

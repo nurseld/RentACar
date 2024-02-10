@@ -2,10 +2,7 @@ package com.tobeto.pair2.entitites.concretes;
 
 import com.tobeto.pair2.entitites.abstracts.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Table(name = "corporate_customers")
 @Entity
@@ -13,6 +10,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class CorporateCustomer extends BaseEntity {
 
     @Column(name="company_name")
@@ -23,6 +21,9 @@ public class CorporateCustomer extends BaseEntity {
 
     @Column(name="contact_name")
     private String contactName;
+
+    @Column(name="phone_number")
+    private String phoneNumber;
 
 
     @ManyToOne

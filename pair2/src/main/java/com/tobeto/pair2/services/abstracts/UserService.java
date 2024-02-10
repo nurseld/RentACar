@@ -16,6 +16,7 @@ public interface UserService extends UserDetailsService {
     void update(UpdateUserRequest request);
     List<GetAllUserResponse> getAll();
     GetByIdUserResponse getById(int id);
-    void add(User user);
+    Integer add(User user);
     String findByName(String username);
+    User findByEmail(String email);
 }
