@@ -21,5 +21,7 @@ public class GetByIdCustomerResponse {
 
     private String nationalIdentity;
 
+    private String phoneNumber;
+
     private Integer userId;
 }
