@@ -4,4 +4,5 @@ import com.tobeto.pair2.entitites.concretes.CorporateCustomer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CorporateCustomerRepository extends JpaRepository<CorporateCustomer,Integer> {
+    CorporateCustomer findByUserId(int userId);
 }

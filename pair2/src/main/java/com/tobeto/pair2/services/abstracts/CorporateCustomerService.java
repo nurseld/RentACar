@@ -18,4 +18,6 @@ public interface CorporateCustomerService {
     List<GetAllCorporateCustomerResponse> getAll();
 
     GetByIdCorporateCustomerResponse getById(int id);
+
+    GetByIdCorporateCustomerResponse getByUserId(int userId);
 }

@@ -41,4 +41,9 @@ public class CorporateCustomersController {
     public GetByIdCorporateCustomerResponse getById(@PathVariable int id){
         return corporateCustomerService.getById(id);
     }
+
+    @GetMapping("/getByUserId/{userId}")
+    public GetByIdCorporateCustomerResponse getByUserId(@PathVariable int userId){
+        return corporateCustomerService.getByUserId(userId);
+    }
 }

@@ -63,4 +63,10 @@ public class CorporateCustomerManager implements CorporateCustomerService {
         GetByIdCorporateCustomerResponse response = this.modelMapperService.forResponse().map(corporateCustomer,GetByIdCorporateCustomerResponse.class);
         return response;
     }
+
+    @Override
+    public GetByIdCorporateCustomerResponse getByUserId(int userId) {
+        GetByIdCorporateCustomerResponse response = this.modelMapperService.forResponse().map(corporateCustomerRepository.findByUserId(userId),GetByIdCorporateCustomerResponse.class);
+        return response;
+    }
 }
