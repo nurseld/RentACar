@@ -5,6 +5,7 @@ import com.tobeto.pair2.services.dtos.corporatecustomer.requests.AddCorporateCus
 import com.tobeto.pair2.services.dtos.corporatecustomer.requests.UpdateCorporateCustomerRequest;
 import com.tobeto.pair2.services.dtos.corporatecustomer.responses.GetAllCorporateCustomerResponse;
 import com.tobeto.pair2.services.dtos.corporatecustomer.responses.GetByIdCorporateCustomerResponse;
+import com.tobeto.pair2.services.dtos.corporatecustomer.responses.GetByUserIdCorporateCustomerResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +44,7 @@ public class CorporateCustomersController {
     }
 
     @GetMapping("/getByUserId/{userId}")
-    public GetByIdCorporateCustomerResponse getByUserId(@PathVariable int userId){
+    public GetByUserIdCorporateCustomerResponse getByUserId(@PathVariable int userId){
         return corporateCustomerService.getByUserId(userId);
     }
 }
