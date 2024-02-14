@@ -30,7 +30,7 @@ public class CustomerManager implements CustomerService {
         Customer customer = Customer.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
-                .nationalIdentity(request.getNationalIdNo())
+                .nationalIdNo(request.getNationalIdNo())
                 .birthDate(request.getBirthDate())
                 .phoneNumber(request.getPhoneNumber())
                 .user(new User(request.getUserId()))

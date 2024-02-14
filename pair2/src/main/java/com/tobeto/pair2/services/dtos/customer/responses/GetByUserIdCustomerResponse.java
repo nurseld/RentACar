@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class GetByUserIdCustomerResponse {
 
+    private LocalDate createdDate;
 
     private Integer id;
 
@@ -20,7 +21,7 @@ public class GetByUserIdCustomerResponse {
 
     private LocalDate birthDate;
 
-    private String nationalIdentity;
+    private String nationalIdNo;
 
     private String phoneNumber;
 

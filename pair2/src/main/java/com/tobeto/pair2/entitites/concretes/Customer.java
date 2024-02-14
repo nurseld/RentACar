@@ -25,7 +25,7 @@ public class Customer extends BaseEntity {
     private LocalDate birthDate;
 
     @Column(name="national_id_no")
-    private String nationalIdentity;
+    private String nationalIdNo;
 
     @Column(name = "phoneNumber")
     private String phoneNumber;

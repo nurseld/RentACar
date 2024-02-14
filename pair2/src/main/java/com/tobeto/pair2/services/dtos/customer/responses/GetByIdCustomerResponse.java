@@ -19,7 +19,7 @@ public class GetByIdCustomerResponse {
 
     private LocalDate birthDate;
 
-    private String nationalIdentity;
+    private String nationalIdNo;
 
     private String phoneNumber;
 
