@@ -1,6 +1,5 @@
 package com.tobeto.pair2.services.concretes;
 
-import com.tobeto.pair2.core.exceptions.BusinessException;
 import com.tobeto.pair2.core.mapper.services.ModelMapperService;
 import com.tobeto.pair2.entitites.concretes.Invoice;
 import com.tobeto.pair2.entitites.concretes.Rental;
@@ -76,10 +75,8 @@ public class RentalManager implements RentalService {
     @Override
     public void update(UpdateRentalRequest request) {
 
-        if(!rentalRepository.existsById(request.getId())){
-            throw new BusinessException("RentalId not found");
-        }
 
+        this.rentalBusinessRules.checkIfRentalIdExists(request.getId());
         this.rentalBusinessRules.checkIfStartDateBeforeToday(request.getStartDate());
         this.rentalBusinessRules.checkIfEndDateBeforeStartDate(request.getEndDate(),request.getStartDate());
         this.rentalBusinessRules.checkIfRentalDayExceed(request.getStartDate(),request.getEndDate());

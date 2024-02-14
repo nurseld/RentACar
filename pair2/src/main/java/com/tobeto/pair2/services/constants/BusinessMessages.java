@@ -33,6 +33,7 @@ public class BusinessMessages {
         public static final String START_DATE_MUST_AFTER_TODAY = "The start date of the rental can not be earlier than today.";
         public static final String END_DATE_MUST_LATER_START_DATE = "The end date of the rental can not be later than the start date.";
 
+        public static final String RENTAL_ID_MUST_EXISTS = "Rental must exists in the database.";
 
         public static String rentalDayLimit(){
             return "A car can be rented for " + BusinessRuleConstants.Rental.RENTAL_DAY_LIMIT + " days at most.";
