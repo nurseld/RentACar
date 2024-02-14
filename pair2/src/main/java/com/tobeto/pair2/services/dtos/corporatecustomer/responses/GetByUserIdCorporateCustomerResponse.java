@@ -4,11 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetByIdCorporateCustomerResponse {
-
+public class GetByUserIdCorporateCustomerResponse {
+    private LocalDate createdDate;
     private Integer id;
     private String email;
     private String password;
@@ -17,5 +19,4 @@ public class GetByIdCorporateCustomerResponse {
     private String contactName;
     private String phoneNumber;
     private int userId;
-
 }

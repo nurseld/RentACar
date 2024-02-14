@@ -9,6 +9,7 @@ import com.tobeto.pair2.services.dtos.customer.requests.AddCustomerRequest;
 import com.tobeto.pair2.services.dtos.customer.requests.UpdateCustomerRequest;
 import com.tobeto.pair2.services.dtos.customer.responses.GetAllCustomerResponse;
 import com.tobeto.pair2.services.dtos.customer.responses.GetByIdCustomerResponse;
+import com.tobeto.pair2.services.dtos.customer.responses.GetByUserIdCustomerResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,7 @@ public class CustomerManager implements CustomerService {
         Customer customer = Customer.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
-                .nationalIdentity(request.getNationalIdNo())
+                .nationalIdNo(request.getNationalIdNo())
                 .birthDate(request.getBirthDate())
                 .phoneNumber(request.getPhoneNumber())
                 .user(new User(request.getUserId()))
@@ -68,4 +69,12 @@ public class CustomerManager implements CustomerService {
         GetByIdCustomerResponse response = this.modelMapperService.forResponse().map(customer, GetByIdCustomerResponse.class);
         return response;
     }
+
+    @Override
+    public GetByUserIdCustomerResponse getByUserId(int userId) {
+        Customer customer = customerRepository.findByUserId(userId).orElseThrow();
+        GetByUserIdCustomerResponse response = this.modelMapperService.forResponse().map(customer, GetByUserIdCustomerResponse.class);
+        return response;
+    }
+
 }

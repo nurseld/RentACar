@@ -9,7 +9,9 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetAllCustomerResponse {
+public class GetByUserIdCustomerResponse {
+
+    private LocalDate createdDate;
 
     private Integer id;
 
@@ -24,4 +26,5 @@ public class GetAllCustomerResponse {
     private String phoneNumber;
 
     private Integer userId;
+
 }

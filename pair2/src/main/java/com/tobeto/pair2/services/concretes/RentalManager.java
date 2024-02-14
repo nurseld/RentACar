@@ -64,7 +64,7 @@ public class RentalManager implements RentalService {
 
         Rental createdRental = this.rentalRepository.save(rental);
         Invoice createdInvoice = invoiceService.add(new AddInvoiceRequest(LocalDate.now(),createdRental.getId(),totalPrice));
-        OrderResponse orderResponse = new OrderResponse(createdRental,createdInvoice);
+        OrderResponse orderResponse = new OrderResponse(createdRental,createdInvoice,carId);
         return orderResponse;
 
 
