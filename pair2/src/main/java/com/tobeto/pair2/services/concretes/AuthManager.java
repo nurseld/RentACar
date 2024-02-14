@@ -11,6 +11,7 @@ import com.tobeto.pair2.services.dtos.corporatecustomer.requests.AddCorporateCus
 import com.tobeto.pair2.services.dtos.customer.requests.AddCustomerRequest;
 import com.tobeto.pair2.services.dtos.user.requests.LoginRequest;
 import com.tobeto.pair2.services.dtos.user.responses.AuthResponse;
+import com.tobeto.pair2.services.rules.UserBusinessRules;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -30,8 +31,12 @@ public class AuthManager implements AuthService {
     private final AuthenticationManager authenticationManager;
     private final CustomerService customerService;
     private final CorporateCustomerService corporateCustomerService;
+    private final UserBusinessRules userBusinessRules;
     @Override
     public void register(AddCustomerRequest addCustomerRequest) {
+
+        this.userBusinessRules.checkIfEmailExists(addCustomerRequest.getEmail());
+
         User user = User.builder()
                 .email(addCustomerRequest.getEmail())
                 .authorities(List.of(Role.USER))
@@ -46,6 +51,9 @@ public class AuthManager implements AuthService {
 
     @Override
     public void register(AddCorporateCustomerRequest addCorporateCustomerRequest) {
+
+
+
         User user = User.builder()
                 .email(addCorporateCustomerRequest.getEmail())
                 .authorities(List.of(Role.USER))
