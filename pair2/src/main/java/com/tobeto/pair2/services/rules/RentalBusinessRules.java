@@ -50,4 +50,10 @@ public class RentalBusinessRules {
             throw new BusinessException(BusinessMessages.Rental.rentalDayLimit());
         }
     }
+
+    public void checkIfRentalIdExists(Integer id){
+        if(!rentalRepository.existsById(id)){
+            throw new BusinessException(BusinessMessages.Rental.RENTAL_ID_MUST_EXISTS);
+        }
+    }
 }
