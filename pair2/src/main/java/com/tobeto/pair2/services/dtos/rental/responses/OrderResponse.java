@@ -17,6 +17,7 @@ public class OrderResponse {
     private int userId;
     private int carId;
     private GetByIdCarResponse car;
+    private String invoiceNo;
 
 
 
@@ -25,6 +26,7 @@ public class OrderResponse {
         this.userId = rental.getUser().getId();
         this.carId = rental.getCar().getId();
         this.car=car;
+        this.invoiceNo=invoice.getInvoiceNo();
 
     }
 }

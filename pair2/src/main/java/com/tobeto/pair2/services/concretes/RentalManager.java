@@ -124,4 +124,20 @@ public class RentalManager implements RentalService {
         GetByIdRentalResponse response = this.modelMapperService.forResponse().map(rental,GetByIdRentalResponse.class);
         return response;
     }
+
+    @Override
+    public List<GetAllRentalResponse> getByUserId(int id) {
+
+        List<Rental> rentals =  rentalRepository.findByUserId(id);
+
+        List<GetAllRentalResponse> rentalResponses = rentals.stream()
+                .map(rental -> {GetAllRentalResponse getAllRentalResponse =
+                        this.modelMapperService.forResponse().map(rental,GetAllRentalResponse.class);
+                               Invoice invoice =  invoiceService.findByRentalId(rental.getId());
+                               getAllRentalResponse.setInvoiceNo(invoice.getInvoiceNo());
+
+                return getAllRentalResponse;
+                }).toList();
+        return rentalResponses;
+    }
 }

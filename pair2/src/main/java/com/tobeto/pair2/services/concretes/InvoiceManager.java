@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -24,6 +25,7 @@ public class InvoiceManager implements InvoiceService {
     public Invoice add(AddInvoiceRequest request) {
 
         Invoice invoice = this.modelMapperService.forRequest().map(request,Invoice.class);
+        invoice.setInvoiceNo(UUID.randomUUID().toString());
         return this.invoiceRepository.save(invoice);
     }
 
@@ -56,6 +58,11 @@ public class InvoiceManager implements InvoiceService {
         Invoice invoice = invoiceRepository.findById(id).orElseThrow();
         GetByIdInvoiceResponse response = this.modelMapperService.forResponse().map(invoice,GetByIdInvoiceResponse.class);
         return response;
+    }
+
+    @Override
+    public Invoice findByRentalId(int id) {
+        return invoiceRepository.findByRentalId(id);
     }
 
 }
