@@ -24,13 +24,13 @@ public class CarBusinessRules {
     }
 
     public void checkIfModelIdExists(Integer id){
-        if(modelService.existsByModelId(id)){
+        if(!modelService.existsByModelId(id)){
             throw new BusinessException(BusinessMessages.Car.MODEL_ID_MUST_EXISTS);
         }
     }
 
     public void checkIfColorIdExists(Integer id){
-        if(colorService.existsByColorId(id)){
+        if(!colorService.existsByColorId(id)){
             throw new BusinessException(BusinessMessages.Car.COLOR_ID_MUST_EXISTS);
         }
     }
