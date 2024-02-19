@@ -31,4 +31,6 @@ public class GetAllRentalResponse {
 
     private int carId;
 
+    private String modelName;
+
 }
