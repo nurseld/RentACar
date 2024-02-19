@@ -17,4 +17,5 @@ public interface InvoiceService {
     GetByIdInvoiceResponse getById(int id);
 
 
+    Invoice findByRentalId(int id);
 }

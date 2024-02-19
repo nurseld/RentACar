@@ -25,8 +25,12 @@ public class GetAllRentalResponse {
 
     private double totalPrice;
 
+    private String invoiceNo;
+
     private int userId;
 
     private int carId;
+
+    private String modelName;
 
 }

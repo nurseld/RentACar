@@ -37,7 +37,7 @@ public class BrandManager implements BrandService {
     public void update(UpdateBrandRequest request) {
 
         Brand brand = this.modelMapperService.forRequest().map(request, Brand.class);
-        this.brandRepository.save(brand);
+        this.brandRepository.saveAndFlush(brand);
 
     }
 

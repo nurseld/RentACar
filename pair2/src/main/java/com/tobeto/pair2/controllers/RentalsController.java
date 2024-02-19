@@ -43,4 +43,8 @@ public class RentalsController {
         return rentalService.getById(id);
     }
 
+    @GetMapping("/getByUserId/{id}")
+    public List<GetAllRentalResponse> getByUserId(@PathVariable int id) {
+        return rentalService.getByUserId(id);
+    }
 }

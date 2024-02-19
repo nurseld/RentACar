@@ -5,6 +5,7 @@ import com.tobeto.pair2.services.dtos.car.requests.AddCarRequest;
 import com.tobeto.pair2.services.dtos.car.requests.UpdateCarRequest;
 import com.tobeto.pair2.services.dtos.car.responses.GetAllCarResponse;
 import com.tobeto.pair2.services.dtos.car.responses.GetByIdCarResponse;
+import com.tobeto.pair2.services.dtos.rental.requests.AvailableCarRentalRequest;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -42,5 +43,9 @@ public class CarsController {
         return carService.getById(id);
     }
 
+    @PostMapping("/getAvailableCars")
+    public List<GetAllCarResponse> getAvailableCarsForRent(@RequestBody AvailableCarRentalRequest request) {
+        return carService.listAvailableCarsForRent(request);
+    }
 
 }

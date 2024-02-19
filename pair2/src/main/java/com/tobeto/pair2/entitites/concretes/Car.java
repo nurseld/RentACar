@@ -34,6 +34,18 @@ public class Car extends BaseEntity {
     @Column(name="image_path")
     private String imagePath;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gear_type")
+    private GearType gearType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "fuel_type")
+    private FuelType fuelType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "body_type")
+    private BodyType bodyType;
+
     @ManyToOne
     @JoinColumn(name = "model_id")
     private Model model;

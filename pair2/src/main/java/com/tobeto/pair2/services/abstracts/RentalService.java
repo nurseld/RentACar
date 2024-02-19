@@ -16,4 +16,6 @@ public interface RentalService {
     void delete(Integer id);
     List<GetAllRentalResponse> getAll();
     GetByIdRentalResponse getById(int id);
+
+    List<GetAllRentalResponse> getByUserId(int id);
 }
