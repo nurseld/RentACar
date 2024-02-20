@@ -33,4 +33,10 @@ public class GetAllRentalResponse {
 
     private String modelName;
 
+    private String brandName;
+
+    private String imagePath;
+
+    private String plate;
+
 }
