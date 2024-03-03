@@ -1,7 +1,7 @@
 package com.tobeto.pair2.services.dtos.rental.responses;
 
-import com.tobeto.pair2.entitites.concretes.Invoice;
-import com.tobeto.pair2.entitites.concretes.Rental;
+import com.tobeto.pair2.entities.concretes.Invoice;
+import com.tobeto.pair2.entities.concretes.Rental;
 import com.tobeto.pair2.services.dtos.car.responses.GetByIdCarResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;

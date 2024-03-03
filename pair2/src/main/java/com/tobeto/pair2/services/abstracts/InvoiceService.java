@@ -1,6 +1,6 @@
 package com.tobeto.pair2.services.abstracts;
 
-import com.tobeto.pair2.entitites.concretes.Invoice;
+import com.tobeto.pair2.entities.concretes.Invoice;
 import com.tobeto.pair2.services.dtos.invoice.requests.AddInvoiceRequest;
 import com.tobeto.pair2.services.dtos.invoice.requests.UpdateInvoiceRequest;
 import com.tobeto.pair2.services.dtos.invoice.responses.GetAllInvoiceResponse;

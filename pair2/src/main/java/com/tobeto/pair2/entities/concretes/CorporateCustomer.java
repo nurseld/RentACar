@@ -1,6 +1,6 @@
-package com.tobeto.pair2.entitites.concretes;
+package com.tobeto.pair2.entities.concretes;
 
-import com.tobeto.pair2.entitites.abstracts.BaseEntity;
+import com.tobeto.pair2.entities.abstracts.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -1,8 +1,8 @@
 package com.tobeto.pair2.services.concretes;
 
 import com.tobeto.pair2.core.mapper.services.ModelMapperService;
-import com.tobeto.pair2.entitites.concretes.Customer;
-import com.tobeto.pair2.entitites.concretes.User;
+import com.tobeto.pair2.entities.concretes.Customer;
+import com.tobeto.pair2.entities.concretes.User;
 import com.tobeto.pair2.repositories.CustomerRepository;
 import com.tobeto.pair2.services.abstracts.CustomerService;
 import com.tobeto.pair2.services.dtos.customer.requests.AddCustomerRequest;
