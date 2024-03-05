@@ -1,8 +1,8 @@
 package com.tobeto.pair2.services.concretes;
 
 import com.tobeto.pair2.core.mapper.services.ModelMapperService;
-import com.tobeto.pair2.entitites.concretes.Car;
-import com.tobeto.pair2.entitites.concretes.Rental;
+import com.tobeto.pair2.entities.concretes.Car;
+import com.tobeto.pair2.entities.concretes.Rental;
 import com.tobeto.pair2.repositories.CarRepository;
 import com.tobeto.pair2.services.abstracts.CarService;
 import com.tobeto.pair2.services.dtos.car.requests.AddCarRequest;

@@ -1,6 +1,6 @@
 package com.tobeto.pair2.repositories;
 
-import com.tobeto.pair2.entitites.concretes.User;
+import com.tobeto.pair2.entities.concretes.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

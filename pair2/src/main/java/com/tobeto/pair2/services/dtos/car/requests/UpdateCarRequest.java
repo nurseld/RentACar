@@ -1,8 +1,8 @@
 package com.tobeto.pair2.services.dtos.car.requests;
 
-import com.tobeto.pair2.entitites.concretes.BodyType;
-import com.tobeto.pair2.entitites.concretes.FuelType;
-import com.tobeto.pair2.entitites.concretes.GearType;
+import com.tobeto.pair2.entities.concretes.BodyType;
+import com.tobeto.pair2.entities.concretes.FuelType;
+import com.tobeto.pair2.entities.concretes.GearType;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

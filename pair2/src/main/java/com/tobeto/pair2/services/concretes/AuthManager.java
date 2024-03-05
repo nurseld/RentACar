@@ -1,8 +1,8 @@
 package com.tobeto.pair2.services.concretes;
 
 import com.tobeto.pair2.core.services.JwtService;
-import com.tobeto.pair2.entitites.concretes.Role;
-import com.tobeto.pair2.entitites.concretes.User;
+import com.tobeto.pair2.entities.concretes.Role;
+import com.tobeto.pair2.entities.concretes.User;
 import com.tobeto.pair2.services.abstracts.AuthService;
 import com.tobeto.pair2.services.abstracts.CorporateCustomerService;
 import com.tobeto.pair2.services.abstracts.CustomerService;

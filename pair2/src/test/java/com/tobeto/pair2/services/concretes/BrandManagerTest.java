@@ -3,7 +3,7 @@ package com.tobeto.pair2.services.concretes;
 
 import com.tobeto.pair2.core.exceptions.BusinessException;
 import com.tobeto.pair2.core.mapper.services.ModelMapperService;
-import com.tobeto.pair2.entitites.concretes.Brand;
+import com.tobeto.pair2.entities.concretes.Brand;
 import com.tobeto.pair2.repositories.BrandRepository;
 
 import com.tobeto.pair2.services.dtos.brand.requests.AddBrandRequest;

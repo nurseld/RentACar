@@ -1,7 +1,7 @@
 package com.tobeto.pair2.services.concretes;
 
 import com.tobeto.pair2.core.mapper.services.ModelMapperService;
-import com.tobeto.pair2.entitites.concretes.Color;
+import com.tobeto.pair2.entities.concretes.Color;
 import com.tobeto.pair2.repositories.ColorRepository;
 import com.tobeto.pair2.services.abstracts.ColorService;
 import com.tobeto.pair2.services.dtos.color.requests.AddColorRequest;

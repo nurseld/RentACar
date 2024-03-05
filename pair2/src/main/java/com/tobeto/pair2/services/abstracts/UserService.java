@@ -1,6 +1,6 @@
 package com.tobeto.pair2.services.abstracts;
 
-import com.tobeto.pair2.entitites.concretes.User;
+import com.tobeto.pair2.entities.concretes.User;
 import com.tobeto.pair2.services.dtos.user.requests.AddUserRequest;
 import com.tobeto.pair2.services.dtos.user.requests.UpdateUserRequest;
 import com.tobeto.pair2.services.dtos.user.responses.GetAllUserResponse;

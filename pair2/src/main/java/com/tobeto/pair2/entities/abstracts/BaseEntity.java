@@ -1,4 +1,4 @@
-package com.tobeto.pair2.entitites.abstracts;
+package com.tobeto.pair2.entities.abstracts;
 
 import jakarta.persistence.*;
 import lombok.Data;
